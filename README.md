@@ -41,7 +41,7 @@ class Solution {
     }
 }
 ```
-## Can we do better : 
+## Can we do better : 🤔
 
 ```java
 /**
