@@ -41,3 +41,48 @@ class Solution {
     }
 }
 ```
+## Can we do better : 
+
+```java
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
+        // case 1 : when p have a right node, we start from right of p
+         if(p.right != null){
+             return findMinimum(p.right);
+         }
+        // case 2 : when p doesn't have right node, we start from root
+        TreeNode inorderSuccessor = null;
+        while(root != null){
+            if(root.val > p.val){
+                inorderSuccessor = root;
+                root = root.left;
+            } else if(root.val < p.val){
+                root = root.right;
+            } else {
+                break;
+            }
+        }
+        return inorderSuccessor;
+    }
+    
+    private TreeNode findMinimum(TreeNode root){
+        while(root.left != null)
+            root = root.left;
+        return root;
+    }
+}
+
+```
+
+# References :
+1. https://www.youtube.com/watch?v=kdK_5rl1cVw
+2. https://leetcode.com/articles/inorder-successor-in-bst
